@@ -1,19 +1,65 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import {
+  createBrowserRouter,
+  RouteObject,
+  RouterProvider,
+} from "react-router-dom";
+import RequireAuth from "./components/RequireAuth";
+import AuthContextProvider from "./context/AuthContextProvider";
+import reportWebVitals from "./reportWebVitals";
+import Dashboard from "./routes/Dashboard";
+import Login from "./routes/Login";
+import Root from "./routes/Root";
+import Search from "./routes/Search";
 
+// Routes
+const routes: RouteObject[] = [
+  {
+    path: "/",
+    element: <Root />,
+    children: [
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "/",
+        element: (
+          <RequireAuth>
+            <Search />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: "/dashboard",
+        element: (
+          <RequireAuth>
+            <Dashboard />
+          </RequireAuth>
+        ),
+      },
+    ],
+  },
+];
+const router = createBrowserRouter(routes, {
+  basename: process.env.PUBLIC_URL,
+});
+
+// React root
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
-    <App />
+    <AuthContextProvider>
+      <RouterProvider router={router} />
+    </AuthContextProvider>
   </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+reportWebVitals(console.log);
