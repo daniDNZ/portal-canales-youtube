@@ -1,3 +1,5 @@
+import { Face4 } from "@mui/icons-material";
+import { Avatar, Box, Button, TextField, Typography } from "@mui/material";
 import { useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ICredentials } from "../auth/auth";
@@ -30,19 +32,53 @@ export default function Login() {
     }
   };
   return (
-    <>
-      <h1>Login</h1>
-      <form ref={formRef}>
-        <input id="user-input" type="text" name="user" placeholder="Username" />
-        <input
-          id="password-input"
-          type="password"
-          name="password"
-          placeholder="Password"
+    <Box
+      sx={{
+        marginTop: 8,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <Avatar sx={{ m: 1, bgcolor: "secondary.light" }}>
+        <Face4 />
+      </Avatar>
+      <Typography component="h1" variant="h5">
+        Sign in
+      </Typography>
+      <Box component="form" ref={formRef} noValidate sx={{ mt: 1 }}>
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          id="user-input"
+          label="Username"
+          name="user"
+          autoComplete="user"
+          autoFocus
         />
-        <button onClick={handleClick}>Login</button>
-      </form>
-      <span>Username & Password: admin012</span>
-    </>
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          name="password"
+          label="Password"
+          type="password"
+          id="password-input"
+          autoComplete="current-password"
+        />
+        <Button
+          onClick={handleClick}
+          fullWidth
+          variant="contained"
+          sx={{ mt: 3, mb: 2 }}
+        >
+          Sign In
+        </Button>
+      </Box>
+      <Typography component="p" variant="body1">
+        Username & Password: admin012
+      </Typography>
+    </Box>
   );
 }
