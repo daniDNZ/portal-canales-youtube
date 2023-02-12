@@ -1,17 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
 import {
   createBrowserRouter,
   RouteObject,
   RouterProvider,
 } from "react-router-dom";
+import { store } from "./app/store";
 import RequireAuth from "./components/RequireAuth";
 import AuthContextProvider from "./context/AuthContextProvider";
 import reportWebVitals from "./reportWebVitals";
 import Dashboard from "./routes/Dashboard";
 import Login from "./routes/Login";
 import Root from "./routes/Root";
-import Search from "./routes/Search";
+import Search from "./routes/search/Search";
 
 // Routes
 const routes: RouteObject[] = [
@@ -54,7 +56,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <AuthContextProvider>
-      <RouterProvider router={router} />
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
     </AuthContextProvider>
   </React.StrictMode>
 );
