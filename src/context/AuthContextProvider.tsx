@@ -1,5 +1,6 @@
 import { useReducer, createContext } from "react";
 import { checkAuth, ICredentials } from "../auth/auth";
+import { getSession, setSession } from "../utils/manageSession";
 
 export enum AuthActionKind {
   SIGNIN = "SIGNIN",
@@ -32,20 +33,18 @@ function AuthContextProvider({ children }: { children: React.ReactNode }) {
           action.payload && checkAuth(action.payload)
             ? action.payload.user
             : "";
-        localStorage.setItem("ytportal_usr", JSON.stringify(newState));
+        setSession(JSON.stringify(newState));
         return newState;
       case "SIGNOUT":
       default:
         newState.user = "";
-        localStorage.setItem("ytportal_usr", JSON.stringify(newState));
+        setSession(JSON.stringify(newState));
         return newState;
     }
   };
 
   // Get the user from localStorage if exists to recover the session
-  const initialAuth = JSON.parse(
-    localStorage.getItem("ytportal_usr") || '{"user": ""}'
-  );
+  const initialAuth = JSON.parse(getSession() || '{"user": ""}');
 
   const [auth, dispatchAuth] = useReducer(authReducer, initialAuth);
 
