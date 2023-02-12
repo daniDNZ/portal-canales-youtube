@@ -1,3 +1,5 @@
+import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import { indigo, pink } from "@mui/material/colors";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
@@ -14,6 +16,14 @@ import Dashboard from "./routes/Dashboard";
 import Login from "./routes/Login";
 import Root from "./routes/Root";
 import Search from "./routes/search/Search";
+
+// MUI Theme
+const theme = createTheme({
+  palette: {
+    primary: indigo,
+    secondary: pink,
+  },
+});
 
 // Routes
 const routes: RouteObject[] = [
@@ -55,9 +65,12 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
+    <CssBaseline />
     <AuthContextProvider>
       <Provider store={store}>
-        <RouterProvider router={router} />
+        <ThemeProvider theme={theme}>
+          <RouterProvider router={router} />
+        </ThemeProvider>
       </Provider>
     </AuthContextProvider>
   </React.StrictMode>
@@ -66,4 +79,4 @@ root.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals(console.log);
+reportWebVitals();
