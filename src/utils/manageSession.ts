@@ -4,7 +4,7 @@
  * @param data - Username, format: {user: "username"}
  */
 function setSession(sessionData: string) {
-  localStorage.setItem(process.env.REACT_APP_SERVER_URL as string, sessionData);
+  localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE_TAG as string, sessionData);
 }
 
 /**
@@ -13,7 +13,7 @@ function setSession(sessionData: string) {
  * @returns Session Info
  */
 function getSession() {
-  return localStorage.getItem(process.env.REACT_APP_SERVER_URL as string);
+  return localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE_TAG as string);
 }
 
 export {setSession, getSession}
