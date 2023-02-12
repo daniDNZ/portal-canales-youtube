@@ -14,8 +14,9 @@ import AuthContextProvider from "./context/AuthContextProvider";
 import reportWebVitals from "./reportWebVitals";
 import Dashboard from "./routes/Dashboard";
 import Login from "./routes/Login";
+import MainContainer from "./routes/MainContainer";
 import Root from "./routes/Root";
-import Search from "./routes/search/Search";
+import Videos from "./routes/Videos";
 
 // MUI Theme
 const theme = createTheme({
@@ -39,17 +40,19 @@ const routes: RouteObject[] = [
         path: "/",
         element: (
           <RequireAuth>
-            <Search />
+            <MainContainer />
           </RequireAuth>
         ),
-      },
-      {
-        path: "/dashboard",
-        element: (
-          <RequireAuth>
-            <Dashboard />
-          </RequireAuth>
-        ),
+        children: [
+          {
+            path: "/dashboard",
+            element: <Dashboard />,
+          },
+          {
+            path: "/videos",
+            element: <Videos />,
+          },
+        ],
       },
     ],
   },

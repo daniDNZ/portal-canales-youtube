@@ -8,7 +8,7 @@ type Thumbnail = {
   url: string
 }
 
-interface IEmptyChannels {
+interface IEmptySearch {
   nextPageToken?: string;
   prevPageToken?: string;
   items: [];
@@ -48,25 +48,35 @@ interface IChannels {
   };
   regionCode: string;
 }
+interface IVideos {
+  items: IChannel[];
+  nextPageToken: string;
+  prevPageToken?: string;
+  pageInfo: {
+    totalResults: number;
+    resultsPerPage: number
+  };
+  [propName: string]: any;
+}
 
 //TODO: VIDEOS INTERFACE
 
 interface IState {
   status: "pending" | "error" | "fulfilled",
   data: {
-    channels: IChannels | IEmptyChannels;
+    channels: IChannels | IEmptySearch;
     channel: IChannel | {};
-    videos: {}
+    videos: IEmptySearch
   }
 }
 
 // THUNKS
 export const fetchChannels = createAsyncThunk(
   'search/fetchChannels',
-  async ({searchTerm, rowsPerPage, pageToken}:{searchTerm: string, rowsPerPage: number, pageToken: string}) => {
+  async (searchTerm: string) => {
   const request: IApiFetchParams = {
     kind: "search",
-    params: `part=snippet&q=${searchTerm}&type=channel&maxResults=${rowsPerPage}&pageToken=${pageToken}`,
+    params: `part=snippet&q=${searchTerm}&type=channel&maxResults=10`,
   };
     return await apiFetch(request);
   },
@@ -85,10 +95,10 @@ export const fetchChannel = createAsyncThunk(
 
 export const fetchVideos = createAsyncThunk(
   'search/fetchVideos',
-  async ({ id, rowsPerPage, pageToken }: { id: string, rowsPerPage: number, pageToken: string }) => {
+  async ({ channelId, rowsPerPage, pageToken }: { channelId: string, rowsPerPage: number, pageToken: string }) => {
     const request: IApiFetchParams = {
       kind: "search",
-      params: `part=snippet&idChannel=${id}&type=video&maxResults=${rowsPerPage}&pageToken=${pageToken}`,
+      params: `part=snippet&idChannel=${channelId}&type=video&maxResults=${rowsPerPage}&pageToken=${pageToken}`,
     };
     return await apiFetch(request);
   },
@@ -104,7 +114,12 @@ const initialState: IState = {
       }
     },
     channel: {},
-    videos: {}
+    videos: {
+      items: [],
+      pageInfo: {
+        totalResults: 0
+      }
+    }
   }
 };
 
@@ -155,8 +170,8 @@ export const channelsSlice = createSlice({
 });
 
 // ACTIONS
-export const selectChannels = (state: RootState): IChannels | IEmptyChannels  => state.channels.data.channels;
+export const selectChannels = (state: RootState): IChannels | IEmptySearch  => state.channels.data.channels;
 export const selectChannel = (state: RootState): IChannel | {} => state.channels.data.channel;
-export const selectVideos = (state: RootState): {} => state.channels.data.videos;
+export const selectVideos = (state: RootState): IVideos | IEmptySearch => state.channels.data.videos;
 
 export default channelsSlice.reducer;
