@@ -1,10 +1,6 @@
 export interface IApiFetchParams {
-  url: {
-    kind: string,
-    params: string
-  },
-  method: string,
-  body?: unknown
+  kind: string,
+  params: string
 }
 
 /**
@@ -15,17 +11,16 @@ export interface IApiFetchParams {
  * @param param0 - Object with url, method and body(optional).
  * @returns Data or empty object.
  */
-export default async function apiFetch({ url, method, body = undefined }: IApiFetchParams) {
+export default async function apiFetch({ kind, params }: IApiFetchParams) {
   try {
     const options: RequestInit = {
-      method,
-      body: body ? JSON.stringify(body) : undefined,
+      method: "GET",
       mode: 'cors',
       headers: {
         'Content-Type': 'application/json',
       },
     };
-    const finalUrl = `${process.env.REACT_APP_YT_API_URL}${url.kind}?${url.params}&key=${process.env.REACT_APP_YT_API_KEY}`
+    const finalUrl = `${process.env.REACT_APP_YT_API_URL}${kind}?${params}&key=${process.env.REACT_APP_YT_API_KEY}`
     const request = new Request( finalUrl, options)
 
     const res = await fetch(request);
