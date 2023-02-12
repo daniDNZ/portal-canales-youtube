@@ -120,8 +120,9 @@ export const channelsSlice = createSlice({
       })
       .addCase(fetchChannels.fulfilled, (state, action) => {
         state.status = 'fulfilled';
-        console.log(action.payload)
-        state.data.channels = action.payload;
+        if (Object.entries(action.payload).length > 0) {
+          state.data.channels = action.payload;
+        }
       })
       .addCase(fetchChannels.rejected, (state) => {
         state.status = 'error';
@@ -131,7 +132,9 @@ export const channelsSlice = createSlice({
       })
       .addCase(fetchChannel.fulfilled, (state, action) => {
         state.status = 'fulfilled';
-        state.data.channel = action.payload;
+        if (Object.entries(action.payload).length > 0) {
+          state.data.channel = action.payload;
+        }
       })
       .addCase(fetchChannel.rejected, (state) => {
         state.status = 'error';
@@ -141,7 +144,9 @@ export const channelsSlice = createSlice({
       })
       .addCase(fetchVideos.fulfilled, (state, action) => {
         state.status = 'fulfilled';
-        state.data.videos = action.payload;
+        if (Object.entries(action.payload).length > 0) {
+          state.data.videos = action.payload;
+        }
       })
       .addCase(fetchVideos.rejected, (state) => {
         state.status = 'error';
