@@ -16,7 +16,7 @@ import Dashboard from "./routes/Dashboard";
 import Login from "./routes/Login";
 import MainContainer from "./routes/MainContainer";
 import Root from "./routes/Root";
-import Videos from "./routes/Videos";
+import Videos from "./routes/videos/Videos";
 
 // MUI Theme
 const theme = createTheme({
@@ -49,7 +49,7 @@ const routes: RouteObject[] = [
             element: <Dashboard />,
           },
           {
-            path: "/videos",
+            path: "/",
             element: <Videos />,
           },
         ],
