@@ -2,22 +2,24 @@ import { SearchOutlined } from "@mui/icons-material";
 import { Autocomplete, InputAdornment, Stack, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
-import {
-  fetchChannel,
-  fetchChannels,
-  fetchVideos,
-  selectChannels,
-} from "./searchSlice";
-//TODO: COMPROBAR SI EL REFACTOR FUNCIONA
+import useDebounce from "../../hooks/useDebounce";
+import { fetchVideos } from "../videos/videosSlice";
+import { fetchChannel, fetchChannels, selectChannels } from "./channelsSlice";
+
 export default function Search() {
   const dispatch = useAppDispatch();
   const channels = useAppSelector(selectChannels);
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const debouncedSearchTerm: string = useDebounce<string>(searchTerm, 500);
 
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const dispatchData = (value: string) => {
+  /**
+   * Dispatch Api request for the channel and its videos
+   *
+   * @param {string}channelTitle
+   */
+  const dispatchData = (channelTitle: string) => {
     const channelId = channels.items.find(
-      (item) => item.snippet.channelTitle === value
+      (item) => item.snippet.channelTitle === channelTitle
     )?.id.channelId;
 
     dispatch(fetchChannel(channelId ? channelId : ""));
@@ -31,8 +33,10 @@ export default function Search() {
   };
 
   useEffect(() => {
-    dispatch(fetchChannels(searchTerm));
-  }, [searchTerm, dispatch]);
+    if (debouncedSearchTerm) {
+      dispatch(fetchChannels(debouncedSearchTerm));
+    }
+  }, [debouncedSearchTerm, dispatch]);
 
   return (
     <>
@@ -40,12 +44,14 @@ export default function Search() {
         <Autocomplete
           id="search-channel-input"
           freeSolo
-          options={channels.items.map((option) => option.snippet.channelTitle)}
+          options={channels.items.map((option) => option.snippet.title)}
           renderInput={(params) => (
             <TextField
               {...params}
               label="Search Channels"
               InputProps={{
+                ...params.InputProps,
+                type: "search",
                 endAdornment: (
                   <InputAdornment position="end">
                     <SearchOutlined />
@@ -60,6 +66,7 @@ export default function Search() {
             />
           )}
           onChange={(_ev, selectedValue) => {
+            console.log(selectedValue);
             dispatchData(selectedValue ? selectedValue : "");
           }}
         />
