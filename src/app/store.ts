@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import channelsReducer from "../routes/search/searchSlice";
+import channelsReducer from "../routes/search/channelsSlice";
+import videosReducer from "../routes/videos/videosSlice";
 
 export const store = configureStore({
   reducer: {
-    channels: channelsReducer
+    channels: channelsReducer,
+    videos: videosReducer
   }
 })
 
