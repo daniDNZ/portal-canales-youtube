@@ -2,7 +2,7 @@
 
 YTPortal es una app que permite ver los vídeos y estadísticas de cualquier canal de YouTube.
 
-La demo está desplegada en [gh-pages](gh-pages).
+La demo está desplegada en [gh-pages](https://danidnz.github.io/portal-canales-youtube/).
 
 ## Configuración
 
@@ -51,10 +51,10 @@ yarn start
 
 \*\*Recuerda que necesitarás tener instalado [Node.js](https://nodejs.org/en/) y `npm` o `yarn`.
 
-## Ruta para próximas versiones
+## Próximos pasos
 
 - Añadir _Snackbars_ para mostrar errores.
 - Activar automáticamente _mock data_ cuando se acaba el cupo de peticiones a la API.
-- DEJAR
+- Eliminar _scroll_ horizontal en la paginación de los vídeos.
 
 ## Gracias por tu tiempo <3
