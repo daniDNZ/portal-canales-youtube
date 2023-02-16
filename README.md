@@ -1,46 +1,60 @@
-# Getting Started with Create React App
+# YT Portal
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+YTPortal es una app que permite ver los vídeos y estadísticas de cualquier canal de YouTube.
 
-## Available Scripts
+La demo está desplegada en [gh-pages](gh-pages).
 
-In the project directory, you can run:
+## Configuración
 
-### `yarn start`
+Puedes probar YTPortal en local, descargándote el repositorio y siguiendo estos pasos:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Cambia el nombre al archivo `src/config.sample.ts` por `config.ts`.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+2. Sustituye el contenido de la constante `YT_API_KEY` por tu key de la YouTube Data API v3.
 
-### `yarn test`
+```javascript
+// Change this for your API key
+export const YT_API_KEY = "<API_KEY>";
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. Para activar o desactivar _mock data_ y así poder usar la App sin hacer peticiones, puedes cambiar el booleano de la constante `LOAD_MOCK_DATA`.
 
-### `yarn build`
+```javascript
+// true = Carga datos mock
+// false = Pide los datos a la API
+const LOAD_MOCK_DATA = true;
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+\*\*Trabajar con _mock data_ provoca que algunas acciones no funcionen, como el paginamiento de la lista de vídeos.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Posiciónate en el directorio e instala las dependencias con `npm` o `yarn`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```shell
+npm install
 
-### `yarn eject`
+## OR
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+yarn
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+5. Lanza la App!
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```shell
+npm start
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## OR
 
-## Learn More
+yarn start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+6. Listo! La puedes visitar en [http://localhost:3000](http://localhost:3000).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+\*\*Recuerda que necesitarás tener instalado [Node.js](https://nodejs.org/en/) y `npm` o `yarn`.
+
+## Ruta para próximas versiones
+
+- Añadir _Snackbars_ para mostrar errores.
+- Activar automáticamente _mock data_ cuando se acaba el cupo de peticiones a la API.
+- DEJAR
+
+## Gracias por tu tiempo <3
