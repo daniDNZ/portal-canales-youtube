@@ -14,7 +14,7 @@ Puedes probar YTPortal en local, descargándote el repositorio y siguiendo estos
 
 ```javascript
 // Change this for your API key
-export const YT_API_KEY = "<API_KEY>";
+const YT_API_KEY = "<API_KEY>";
 ```
 
 3. Para activar o desactivar _mock data_ y así poder usar la App sin hacer peticiones, puedes cambiar el booleano de la constante `LOAD_MOCK_DATA`.
