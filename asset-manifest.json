@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/portal-canales-youtube/static/js/main.748d3977.js",
+    "static/js/787.17bff52b.chunk.js": "/portal-canales-youtube/static/js/787.17bff52b.chunk.js",
+    "index.html": "/portal-canales-youtube/index.html",
+    "main.748d3977.js.map": "/portal-canales-youtube/static/js/main.748d3977.js.map",
+    "787.17bff52b.chunk.js.map": "/portal-canales-youtube/static/js/787.17bff52b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.748d3977.js"
+  ]
+}
