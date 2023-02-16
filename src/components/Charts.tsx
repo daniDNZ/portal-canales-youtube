@@ -9,13 +9,10 @@ import {
   ResponsiveContainer,
   BarChart,
   XAxis,
-  YAxis,
-  Legend,
-  CartesianGrid,
   Bar,
 } from "recharts";
 
-interface IData {
+export interface IData {
   name: string;
   value: number | undefined;
 }
@@ -62,7 +59,6 @@ function YTPortalPieChart({ data }: { data: IData[] | undefined }) {
   const onPieLeave = (_: any, index: number) => {
     setActiveIndex(-1);
   };
-  console.log(data);
   return (
     <PieChart width={180} height={180}>
       <Pie
@@ -87,13 +83,13 @@ function YTPortalPieChart({ data }: { data: IData[] | undefined }) {
   );
 }
 
-function YTPortalBarChart({ data }: { data: IData[] }) {
+function YTPortalBarChart({ data }: { data: IData[] | undefined }) {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart data={data}>
         <XAxis dataKey="name" axisLine={false} tickLine={false} />
         <Tooltip cursor={{ fill: "none" }} />
-        <Bar dataKey="value" fill="#8884d8" background={{ fill: "#eee" }} />
+        <Bar dataKey="value" fill={COLORS[0]} background={{ fill: "#eee" }} />
       </BarChart>
     </ResponsiveContainer>
   );

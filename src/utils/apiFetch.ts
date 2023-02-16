@@ -6,12 +6,12 @@ export interface IApiFetchParams {
 /**
  * Function to fetch YT API. 
  * Example:
- * apiFetch({"videos/"})
+ * apiFetch({kind: "videos", params:"part=id,player,statistics"})
  * 
  * @param param0 - Object with url, method and body(optional).
  * @returns Data or empty object.
  */
-export default async function apiFetch({ kind, params }: IApiFetchParams) {
+export default async function apiFetch({ kind, params }: IApiFetchParams): Promise<unknown> {
   try {
     const options: RequestInit = {
       method: "GET",
@@ -36,6 +36,6 @@ export default async function apiFetch({ kind, params }: IApiFetchParams) {
 
     return data;
   } catch (err) {
-    return {};
+    return {items: [{}]};
   }
 }
