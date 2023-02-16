@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import ChannelTabs from "../components/ChannelTabs";
-import Search from "./search/Search";
+import Search from "./Search";
 
 export default function MainContainer() {
   return (
