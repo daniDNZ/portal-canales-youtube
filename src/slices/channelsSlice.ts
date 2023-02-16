@@ -29,7 +29,6 @@ export const fetchChannels = createAsyncThunk(
     if (LOAD_MOCK_DATA) {
       return await delay(mockChannels, 200) as IApiResponse | undefined;
     }
-    console.log("hola");
     return await apiFetch(request) as IApiResponse | undefined;
   },
   );
