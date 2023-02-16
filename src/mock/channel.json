@@ -1,0 +1,61 @@
+{
+	"kind": "youtube#channelListResponse",
+	"etag": "TixgzMS8dV30q1myMQTKN1nCj9U",
+	"pageInfo": {
+		"totalResults": 1,
+		"resultsPerPage": 5
+	},
+	"items": [
+		{
+			"kind": "youtube#channel",
+			"etag": "qoucNhCFEls5rPbdZtBTqJ0HB2Q",
+			"id": "UCYQ8oHPbnZ1sLBjiCSdP8ZQ",
+			"snippet": {
+				"title": "ARTA GAME",
+				"description": "Vlogs Diarios a las 20:40!\n✌🏽Vive al Máximo!✌🏽\n",
+				"customUrl": "@artagame",
+				"publishedAt": "2017-07-24T17:34:36Z",
+				"thumbnails": {
+					"default": {
+						"url": "https://yt3.ggpht.com/puqMdLJ2hRHvRNpsDuxlMhQFyDAlFybFklPTPK_xpO3v8QRitqBc-L0Ei1DFxCeMqXSNcZRznok=s88-c-k-c0x00ffffff-no-rj",
+						"width": 88,
+						"height": 88
+					},
+					"medium": {
+						"url": "https://yt3.ggpht.com/puqMdLJ2hRHvRNpsDuxlMhQFyDAlFybFklPTPK_xpO3v8QRitqBc-L0Ei1DFxCeMqXSNcZRznok=s240-c-k-c0x00ffffff-no-rj",
+						"width": 240,
+						"height": 240
+					},
+					"high": {
+						"url": "https://yt3.ggpht.com/puqMdLJ2hRHvRNpsDuxlMhQFyDAlFybFklPTPK_xpO3v8QRitqBc-L0Ei1DFxCeMqXSNcZRznok=s800-c-k-c0x00ffffff-no-rj",
+						"width": 800,
+						"height": 800
+					}
+				},
+				"localized": {
+					"title": "ARTA GAME",
+					"description": "Vlogs Diarios a las 20:40!\n✌🏽Vive al Máximo!✌🏽\n"
+				},
+				"country": "ES"
+			},
+			"statistics": {
+				"viewCount": "982778241",
+				"subscriberCount": "3630000",
+				"hiddenSubscriberCount": false,
+				"videoCount": "1193"
+			},
+			"brandingSettings": {
+				"channel": {
+					"title": "ARTA GAME",
+					"description": "Vlogs Diarios a las 20:40!\n✌🏽Vive al Máximo!✌🏽\n",
+					"keywords": "arta \"arta game\" artamios vlog",
+					"unsubscribedTrailer": "KT5F8sdbUNg",
+					"country": "ES"
+				},
+				"image": {
+					"bannerExternalUrl": "https://yt3.googleusercontent.com/eEIBsXtTbTUp4ZLEbW47FqNM8W1TdFCoPLolQj_KW9Ba7AFQX8dE-Tk826dEXhZgNcS6yrZ2"
+				}
+			}
+		}
+	]
+}
