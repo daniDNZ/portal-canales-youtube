@@ -1,5 +1,5 @@
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
-import { indigo, pink } from "@mui/material/colors";
+import { grey } from "@mui/material/colors";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
@@ -16,14 +16,22 @@ import Dashboard from "./routes/Dashboard";
 import Login from "./routes/Login";
 import MainContainer from "./routes/MainContainer";
 import Root from "./routes/Root";
-import Videos from "./routes/videos/Videos";
+import Videos from "./routes/Videos";
 
 // MUI Theme
 const theme = createTheme({
   palette: {
-    primary: indigo,
-    secondary: pink,
+    primary: {
+      main: "#0088FE",
+    },
+    secondary: {
+      main: "#FF8042",
+    },
+    background: {
+      default: grey[100],
+    },
   },
+  components: {},
 });
 
 // Routes
