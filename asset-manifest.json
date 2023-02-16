@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/portal-canales-youtube/static/js/main.748d3977.js",
+    "main.js": "/portal-canales-youtube/static/js/main.3392533f.js",
     "static/js/787.17bff52b.chunk.js": "/portal-canales-youtube/static/js/787.17bff52b.chunk.js",
     "index.html": "/portal-canales-youtube/index.html",
-    "main.748d3977.js.map": "/portal-canales-youtube/static/js/main.748d3977.js.map",
+    "main.3392533f.js.map": "/portal-canales-youtube/static/js/main.3392533f.js.map",
     "787.17bff52b.chunk.js.map": "/portal-canales-youtube/static/js/787.17bff52b.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.748d3977.js"
+    "static/js/main.3392533f.js"
   ]
 }
