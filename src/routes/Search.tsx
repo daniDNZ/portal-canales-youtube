@@ -48,11 +48,13 @@ export default function Search() {
   useEffect(() => {
     setAcOptions(
       channels?.items
-        ? channels?.items.map((channel) => ({
-            name: channel.snippet.title,
-            thumb: channel.snippet.thumbnails.default.url,
-            id: channel.id.channelId,
-          }))
+        ? channels?.items.map((channel) => {
+            return {
+              name: channel?.snippet?.title,
+              thumb: channel?.snippet?.thumbnails?.default?.url,
+              id: channel?.id?.channelId,
+            };
+          })
         : []
     );
   }, [channels]);

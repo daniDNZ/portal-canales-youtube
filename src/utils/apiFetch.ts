@@ -1,3 +1,5 @@
+import { YT_API_KEY, YT_API_URL } from "../config";
+
 export interface IApiFetchParams {
   kind: string,
   params: string
@@ -20,7 +22,7 @@ export default async function apiFetch({ kind, params }: IApiFetchParams): Promi
         'Content-Type': 'application/json',
       },
     };
-    const finalUrl = `${process.env.REACT_APP_YT_API_URL}${kind}?${params}&key=${process.env.REACT_APP_YT_API_KEY}`
+    const finalUrl = `${YT_API_URL}${kind}?${params}&key=${YT_API_KEY}`
     const request = new Request( finalUrl, options)
 
     const res = await fetch(request);
